@@ -37,67 +37,58 @@ typedef struct Matrix3x3
 
     int Det()
     {
-        int result;
+        int result = 0;
 
-        int x = 1, y = 1, z = 1;
+        int x[3];
+        for (int i = 0; i < 3; i++)
+	    {
+		    x[i] = 1;
+	    }
         int num;
 
         for (int i = 0; i < 3; i++)
         {
             num = i;
 
-            x *= at(i, num);
-            num++;
-
-            if(num >= 3)
+            for (int j = 0; j < 3; j++)
             {
-                num = num - 3;
+                x[j] *= at(i, num);
+                num++;
+
+                if(num >= 3)
+                {
+                    num = num - 3;
+                }
             }
-
-            y *= at(i, num);
-            num ++;
-
-            if(num >= 3)
-            {
-                num = num - 3;
-            }
-
-            z *= at(i, num);
         }
         
-        result = x + y + z;
-        x = 1, y = 1, z = 1;
+        for (int i = 0; i < 3; i++)
+        {
+            result = result + x[i];
+            x[i] = 1;
+        }
 
         for (int i = 0; i < 3; i++)
         {
             num = i + i;
 
-            if(num >= 3)
+            for (int j = 0; j < 3; j++)
             {
-                num = num - 3;
+                if(num >= 3)
+                {
+                    num = num - 3;
+                }
+
+                x[j] *= at(i, num);
+                num++;
             }
-
-            x *= at(i, num);
-            num++;
-
-            if(num >= 3)
-            {
-                num = num - 3;
-            }
-
-            y *= at(i, num);
-            num ++;
-
-            if(num >= 3)
-            {
-                num = num - 3;
-            }
-
-            z *= at(i, num);
         }
 
-        result = result - (x + y + z);
-
+        for (int i = 0; i < 3; i++)
+        {
+            result = result - x[i];
+        }
+        
         return result;
     }
 
@@ -164,22 +155,22 @@ int main()
     b.setMatrix(matrix2);
     b.printMatrix();
 
-    cout << "Çà·ÄÀÇ µ¡¼À : " << endl;
+    cout << "í–‰ë ¬ì˜ ë§ì…ˆ : " << endl;
     add(a, b).printMatrix();
 
-    cout << "Çà·ÄÀÇ °ö¼À : " << endl;
+    cout << "í–‰ë ¬ì˜ ê³±ì…ˆ : " << endl;
     multi(a, b).printMatrix();
 
-    cout << "Çà·Ä aÀÇ ÆÇº°½Ä : ";
+    cout << "í–‰ë ¬ aì˜ íŒë³„ì‹ : ";
     cout << a.Det() << endl;
-    cout << "Çà·Ä bÀÇ ÆÇº°½Ä : ";
+    cout << "í–‰ë ¬ bì˜ íŒë³„ì‹ : ";
     cout << b.Det() << endl;
 
     cout << endl;
 
-    cout << "Çà·Ä aÀÇ trace : ";
+    cout << "í–‰ë ¬ aì˜ trace : ";
     cout << a.Trace() << endl;
-    cout << "Çà·Ä bÀÇ trace : ";
+    cout << "í–‰ë ¬ bì˜ trace : ";
     cout << b.Trace() << endl;
     
     cout << endl;
