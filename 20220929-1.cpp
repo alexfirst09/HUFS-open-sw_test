@@ -1,11 +1,12 @@
 #include <iostream>
 using namespace std;
 
-
+//2차원 배열을 이용한 3x3 행렬
 typedef struct Matrix3x3 
 {
     int matrix[3][3];
 
+//행렬 값 받아와서 저장하는 함수
     void setMatrix(int mat[3][3]) 
     {
         for (int i = 0; i < 3; i++) 
@@ -17,6 +18,7 @@ typedef struct Matrix3x3
         }
     }
 
+//행렬을 출력하는 함수
     void printMatrix() 
     {
         for (int i = 0; i < 3; i++) 
@@ -30,11 +32,13 @@ typedef struct Matrix3x3
         cout << endl;
     }
 
+//행렬의 특정 요소에 접근할 수 있는 함수
     int at(int x, int y)
     {
         return matrix[x][y];
     }
 
+//행렬의 판별식을 구하는 함수
     int Det()
     {
         int result = 0;
@@ -92,6 +96,7 @@ typedef struct Matrix3x3
         return result;
     }
 
+//행렬의 Trace를 리턴하는 함수
     int Trace()
     {
         int trace = 0;
@@ -106,6 +111,7 @@ typedef struct Matrix3x3
 
 } Mat;
 
+//행렬의 덧셈
 Mat add(Mat a, Mat b)
 {
     Mat result;
@@ -121,6 +127,7 @@ Mat add(Mat a, Mat b)
     return result;
 }
 
+//행렬의 곱셈
 Mat multi(Mat a, Mat b)
 {
     Mat result;
