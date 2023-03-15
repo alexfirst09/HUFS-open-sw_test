@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
 
+static const int MAX = 3;
 //2차원 배열을 이용한 3x3 행렬
 typedef struct Matrix3x3 
 {
@@ -39,16 +40,17 @@ typedef struct Matrix3x3
     }
 
 //행렬의 판별식을 구하는 함수
-    int Det()
+    int Det(int mat[MAX][MAX])
     {
         int result = 0;
 
         int x[3];
+	int num;
         for (int i = 0; i < 3; i++)
 	    {
 		    x[i] = 1;
 	    }
-        int num;
+       
 
         for (int i = 0; i < 3; i++)
         {
@@ -149,12 +151,23 @@ Mat multi(Mat a, Mat b)
 
 int main() 
 {
-    int matrix1[3][3] = { {1,2,3}
-                         ,{4,5,6}
-                         ,{7,8,9} };
-    int matrix2[3][3] = { {1,0,0},
-                          {4,5,6},
-                          {7,8,9} };
+   int matrix1[3][3] = { 0 };
+   int matrix2[3][3] = { 0 };
+   for (int i = 0; i < MAX; i++) 
+   {
+	for (int j = 0; j < MAX;j++) 
+	{
+		cin >> matrix1[i][j];
+	}
+   }
+	
+    for (int i = 0; i < MAX; i++) 
+    {
+	for (int j = 0; j < MAX; j++)
+	{
+		cin >> matrix2[i][j];
+	}
+    }
     Mat a;
     a.setMatrix(matrix1);
     a.printMatrix();
