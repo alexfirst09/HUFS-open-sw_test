@@ -166,7 +166,6 @@ int main()
 
     cout << "행렬의 덧셈 : " << endl;
     add(a, b).printMatrix();
-
     cout << "행렬의 곱셈 : " << endl;
     multi(a, b).printMatrix();
 
