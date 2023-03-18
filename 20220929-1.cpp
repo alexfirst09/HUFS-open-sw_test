@@ -1,6 +1,6 @@
 //2 contributors
 //Touched by user2 (230317)
-//stop
+
 
 #include <iostream>
 using namespace std;
