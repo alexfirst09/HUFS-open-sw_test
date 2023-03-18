@@ -6,6 +6,7 @@
 using namespace std;
 
 //2차원 배열을 이용한 3x3 행렬
+//3x3 행렬을 구조체로 만들기
 typedef struct Matrix3x3 
 {
     int matrix[3][3];
