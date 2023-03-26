@@ -117,7 +117,7 @@ typedef struct Matrix3x3
 } Mat;
 
 //행렬의 덧셈
-Mat add(Mat a, Mat b)
+Mat add(Mat *a, Mat *b)
 {
     Mat result;
 
@@ -125,7 +125,7 @@ Mat add(Mat a, Mat b)
     {
         for (int j = 0; j < 3; j++)
         {
-            result.matrix[i][j] = a.at(i, j) + b.at(i, j);
+            result.matrix[i][j] = a->at(i, j) + b->at(i, j);
         }
     }
 
@@ -133,7 +133,7 @@ Mat add(Mat a, Mat b)
 }
 
 //행렬의 곱셈
-Mat multi(Mat a, Mat b)
+Mat multi(Mat *a, Mat *b)
 {
     Mat result;
 
@@ -144,7 +144,7 @@ Mat multi(Mat a, Mat b)
             result.matrix[i][j] = 0;
             for (int k = 0; k < 3; k++)
             {
-                result.matrix[i][j] += a.at(i, k) * b.at(k, j);
+                result.matrix[i][j] += a->at(i, k) * b->at(k, j);
             }
         }
     }
@@ -168,9 +168,9 @@ int main()
     b.printMatrix();
 
     cout << "행렬의 덧셈 : " << endl;
-    add(a, b).printMatrix();
+    add(&a, &b).printMatrix();
     cout << "행렬의 곱셈 : " << endl;
-    multi(a, b).printMatrix();
+    multi(&a, &b).printMatrix();
 
     cout << "행렬 a의 판별식 : ";
     cout << a.Det() << endl;
@@ -187,9 +187,9 @@ int main()
     cout << endl;
 
     cout << "(AB).Trace() : ";
-    cout << multi(a, b).Trace() << endl;
+    cout << multi(&a, &b).Trace() << endl;
     cout << "(AB).Det() : ";
-    cout << multi(a, b).Det() << endl;
+    cout << multi(&a, &b).Det() << endl;
 
     return 0;
 }
